@@ -1,26 +1,21 @@
-import sys
-import os
-from argparse import ArgumentParser
+from utils import *
 
-# parser = ArgumentParser()
-# parser.add_argument("-f", "--file")
-# parser.add_argument("-q", "--quiet")
-# args = parser.parse_args()
+if __name__ == "__main__":
+    try:
+        args = parse_args()
+    except Exception as e:
+        print(f"Something goes wrong: {e}")
+        exit(1)
 
-# first task
-print(sys.version)
-args = sys.argv
-# second task
-if len(args) > 1:
-    dir_to_create = args[1]
-    if not os.path.exists(dir_to_create):
-        os.makedirs(dir_to_create)
+    command = args.command
+    if command == "1":
+        print_pythin_version()
+    elif command == "2":
+        create_dir_by_path(args.path)
+    elif command == "3":
+        print_parent_dir()
     else:
-        print(f"Directory with name {dir_to_create} is already exists!")
-# third task
-if len(args) > 2:
-    dir_to_watch = args[2]
-    print(os.listdir(dir_to_watch))
+        print(f"Invalid command number: {command}")
 
 
 
